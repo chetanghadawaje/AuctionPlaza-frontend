@@ -5,7 +5,9 @@ export class CommonConstants {
 
     public static APIURL = {
         rehisterUrl: "/users/register",
-        loginUrl: "/users/login"
+        loginUrl: "/users/login",
+        bids: "/bids/",
+        applyBids: "/bids/apply"
     }
 
 }

@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 50px;
+    height: 100vh;
+}
+.product-info {
+    width: 70%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    height: 100vh;
+}
+
+.bid-list {
+    width: 30%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    height: 100vh;
+}
