@@ -2,7 +2,7 @@
     display: flex;
     list-style-type: none;
     padding: 0;
-    margin: 5px;
+    margin: 0;
 }
 
 .login ul li {
@@ -10,7 +10,8 @@
 }
 
 .login ul li a {
-    color: red;
+    margin-left: 85px; 
+    color: #ff9948;
 }
 
 input {
@@ -42,4 +43,10 @@ input::placeholder {
     font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
+    background-image: url('/assets/images/login-small-bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    font-weight: lighter;
 }
+
