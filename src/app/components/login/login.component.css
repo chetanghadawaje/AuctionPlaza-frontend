@@ -1,0 +1,45 @@
+.login ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 5px;
+}
+
+.login ul li {
+    margin-right: 10px;
+}
+
+.login ul li a {
+    color: red;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ff9948;
+}
+
+input::placeholder {
+    color: #999;
+}
+
+.button {
+    background-color: #ff9948;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
