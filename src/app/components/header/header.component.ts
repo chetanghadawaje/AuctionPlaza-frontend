@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -7,6 +8,6 @@ import { LoginComponent } from '../login/login.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent  {
 
 }

@@ -1,0 +1,60 @@
+  <div class="container-fluid">
+  <div class="signup-card p-2">
+    <div class="row form">
+     <div class="col-md-6 col-sm-6 ml-auto">
+      <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+        <div class="form-group col-md-8">
+          <h3 class="p-3">Welcome to Sign Up</h3>
+          <label for="first_name">First Name</label>
+          <input type="text" class="form-control" id="first_name" formControlName="first_name">
+          <span class="small text-danger" *ngIf="signUpForm.get('first_name').touched && signUpForm.get('first_name').invalid">
+            <ng-container *ngIf="signUpForm.get('first_name').errors?.required">First Name is required</ng-container>
+          </span>
+        </div>
+      
+        <div class="form-group col-md-8">
+          <label for="last_name">Last Name</label>
+          <input type="text" class="form-control" id="last_name" formControlName="last_name">
+          <span class="small text-danger" *ngIf="signUpForm.get('last_name').touched && signUpForm.get('last_name').invalid">
+            <ng-container *ngIf="signUpForm.get('last_name').errors?.required">Last Name is required</ng-container>
+          </span>
+        </div>
+      
+        <div class="form-group col-md-8">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+          <span class="small text-danger" *ngIf="signUpForm.get('email').touched && signUpForm.get('email').invalid">
+            <ng-container *ngIf="signUpForm.get('email').errors?.required">Email is required</ng-container>
+            <ng-container *ngIf="signUpForm.get('email').errors?.email">Email is invalid</ng-container>
+          </span>
+        </div>
+          <div class="form-group col-md-8">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+            <span class="small text-danger" *ngIf="signUpForm.get('password').touched && signUpForm.get('password').invalid">
+              <ng-container *ngIf="signUpForm.get('password').errors?.required">Password is required</ng-container>
+              <ng-container *ngIf="signUpForm.get('password').errors?.minlength">Password must be at least 8 characters</ng-container>
+              <ng-container *ngIf="signUpForm.get('password').errors?.pattern">
+                Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character
+              </ng-container>
+            </span>
+          </div>
+          
+          <div class="form-group col-md-8">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+            <span class="small text-danger" *ngIf="signUpForm.get('confirmPassword').touched && signUpForm.get('confirmPassword').invalid" >
+              <ng-container *ngIf="signUpForm.get('confirmPassword').errors?.required">Confirm Password is required</ng-container>
+            </span>
+            <span class="small text-danger" *ngIf="signUpForm.errors?.passwordMissMatch && signUpForm.get('confirmPassword').touched">
+              Passwords do not match
+            </span>
+            <button type="submit" class="btn btn-primary btn-block mt-3">Sign Up</button>
+          </div>
+      </form>
+     </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,11 +1,14 @@
-<form class="login" action="#" method="POST">
-  <ul>
-    <li><input type="text" placeholder="Username or Email" /></li>
-    <li><input type="password" placeholder="Password" /></li>
-    <li><button type="submit" class="button">LOGIN</button></li>
-  </ul>
-  <ul>
-    <li><input type="checkbox" id="remember-me" /><label class="remember" for="remember-me">Remember Me</label></li>
-    <li><a href="">Forgot password? Click Here</a></li>
-  </ul>
-</form>
+<div *ngIf="LoginDetails === 'default'">
+  <form class="login" action="#" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <ul>
+      <li><input type="text" placeholder="Username or Email" formControlName="email"/></li>
+      <li><input type="password" placeholder="Password" formControlName="password"/></li>
+      <li><button type="submit" class="button" routerLink="/user">LOGIN</button></li>
+    </ul>
+    <ul>
+      <li><input type="checkbox" id="remember-me"/><label class="remember" for="remember-me">Remember Me</label></li>
+      <li><a href="">Forgot password? Click Here</a></li>
+    </ul>
+  </form>
+</div>
+

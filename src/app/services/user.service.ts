@@ -11,14 +11,14 @@ import { CommonConstants } from '../common/CommonConstants';
 })
 export class UserService {
 
-  baseUrl: String
+  baseUrl = environment.serviceBaseUrls.DOMAIN;
 
   constructor(private httpClient:HttpClient) { 
     this.baseUrl = environment.serviceBaseUrls.DOMAIN
   }
 
-  public registerUser(requestdata: userRegisterInterface): Observable<any> {
-    let url = this.baseUrl + CommonConstants.APIURL.rehisterUrl
+  public onSignUp(requestdata: userRegisterInterface): Observable<any> {
+    let url = this.baseUrl + CommonConstants.APIURL.registerUrl
     return this.httpClient.post(url, requestdata)
   }
 
