@@ -26,3 +26,6 @@ input.ng-submitted{
       border-color: rgb(240, 34, 34);
       box-shadow: 2px 2px 2px  rgb(255, 22, 22);
     }
+.error-message{
+    color: red;
+}

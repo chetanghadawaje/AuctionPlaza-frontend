@@ -14,7 +14,8 @@ export class SignupComponent implements OnInit{
   constructor(private userService : UserService){}
   
   signUpForm : FormGroup | any;
-
+  httpErrorMsg : any;
+ 
   ngOnInit(): void {
   this.signUpForm = new FormGroup({
     first_name: new FormControl('',Validators.required),
@@ -27,6 +28,7 @@ export class SignupComponent implements OnInit{
     confirmPassword: new FormControl('', [Validators.required]),
   }, {validators: this.passwordMatchValidator})
 }
+
   onSignUp(){
     console.log(this.signUpForm.value);
     if(this.signUpForm.valid){
@@ -36,13 +38,16 @@ export class SignupComponent implements OnInit{
           console.log('user registered successfully',response)
         },
         error:(error)=>{
-          console.log('error registering user',error)
+          console.log('error registering user',error.error.Message);
+          this.httpErrorMsg =  error.error.Message;
         }
       })
       this.signUpForm.reset()
     }
+
   }
   passwordMatchValidator(control:AbstractControl){
     return control.get('password')?.value == control.get('confirmPassword')?.value ? null : {passwordMissMatch: true}
   }
+  
 }

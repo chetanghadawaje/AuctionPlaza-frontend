@@ -13,11 +13,13 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent implements OnInit{
   userName : string = '';
+  DisplayUserName : any;
   LoginDetails: string = 'default'
 
   constructor(private userService: UserService, private router : Router,){}
   
   loginForm: FormGroup|any;
+  UserName: any;
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -28,14 +30,17 @@ export class LoginComponent implements OnInit{
       if(val.url){
         // console.log(val.url);
         if(localStorage.getItem('setUserData') && val.url.includes('user')){
-          // console.log('this is login area');
           this.LoginDetails = 'user'
         }else{
-          // console.log('this is outside login area');
           this.LoginDetails = 'default'
         }
-      }
+      } 
     })  
+    this.UserName = localStorage.getItem('setUserData');
+    if(this.UserName){
+     this.DisplayUserName = JSON.parse(this.UserName)
+     console.log(this.DisplayUserName)
+    }
   }
   loginUser(){
     console.log(this.loginForm.value);
@@ -44,6 +49,7 @@ export class LoginComponent implements OnInit{
       this.userService.loginUser(loginData).subscribe({
         next:(response)=>{
           console.log('user registered successfully',response);
+          this.loginForm.reset();
           const token = response.Data[0].token
           localStorage.setItem('setUserData',JSON.stringify({Email: this.loginForm.value.email, 
           Password: this.loginForm.value.password,
@@ -57,6 +63,4 @@ export class LoginComponent implements OnInit{
       })
     }
   }
-
-
 }
