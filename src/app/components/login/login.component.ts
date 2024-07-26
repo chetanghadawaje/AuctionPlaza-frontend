@@ -29,38 +29,33 @@ export class LoginComponent implements OnInit{
     this.router.events.subscribe((val:any)=>{
       if(val.url){
         // console.log(val.url);
-        if(localStorage.getItem('setUserData') && val.url.includes('user')){
+        if(localStorage.getItem('email') && val.url.includes('user')){
           this.LoginDetails = 'user'
         }else{
           this.LoginDetails = 'default'
         }
       } 
     })  
-    this.UserName = localStorage.getItem('setUserData');
-    if(this.UserName){
-     this.DisplayUserName = JSON.parse(this.UserName)
-     console.log(this.DisplayUserName)
-    }
+    this.DisplayUserName = localStorage.getItem('email')
   }
+
   loginUser(){
     console.log(this.loginForm.value);
     if(this.loginForm.valid){
       const loginData = this.loginForm.value;
-      this.userService.loginUser(loginData).subscribe({
+     this.userService.loginUser(loginData).subscribe({
         next:(response)=>{
           console.log('user registered successfully',response);
           this.loginForm.reset();
           const token = response.Data[0].token
-          localStorage.setItem('setUserData',JSON.stringify({Email: this.loginForm.value.email, 
-          Password: this.loginForm.value.password,
-          token: token
-        }))
+          console.log('=>', loginData['email']);
+          localStorage.setItem('email',loginData['email']);
         this.router.navigate(['/user']);
         },
         error:(error)=>{
           console.log('error registering user',error)
         }
-      })
+      }) 
     }
   }
 }
